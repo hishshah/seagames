@@ -16,29 +16,9 @@
 
 		<!-- Chart JS library-->
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-		<script type="text/javascript">
-			google.charts.load('current', {packages: ['corechart']});
-			google.charts.setOnLoadCallback(drawChart);
-
-			// function drawChart() {
-			// 	// Define the chart to be drawn.
-			// 	var data = new google.visualization.DataTable();
-			// 	data.addColumn('string', 'Element');
-			// 	data.addColumn('number', 'Percentage');
-			// 	data.addRows([
-			// 		['Nitrogen', 0.78],
-			// 		['Oxygen', 0.21],
-			// 		['Other', 0.01]
-			// 	]);
-
-			// 	// Instantiate and draw the chart.
-			// 	var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-			// 	chart.draw(data, null);
-			// }
-		</script>
 
 		<link href="css/main.css" rel="stylesheet">
-		<script type="text/javascript" src="js/index.js" charset="utf-8"></script>
+		<!-- <script type="text/javascript" src="js/index.js" charset="utf-8"></script> -->
 	</head>	
 	<body>
 		<h1 class="title">SEA GAMES OVERVIEW</h1>
@@ -55,64 +35,50 @@
 		<div class="container">
 		    <div class="table-responsive">
 				<table style="width: 100%">
-				<?php
-				// final form
-				// {
-				// 	"country": "Thailand",
-				// 	"data": [["cabor_name1", "gold", "silver", "bronze"], ["cabor_name2", "gold", "silver", "bronze"], ...]
-				// }
-					$country = ["Thailand", "Indonesia", "Malaysia", "Filipina", "Singapore", "Vietnam", "Myanmar", "Laos", "Kamboja", "Brunei", "Timor Timur"];
-					$country_array = array ("Thailand" => [],"Indonesia" => [],"Malaysia" => [],"Filipina" => [],"Singapore" => [],"Vietnam" => [],"Myanmar" => [],"Laos" => [],"Kamboja" => [],"Brunei" => [],"Timor Timur" => []);
-					if (($handle = fopen("csv/medal.csv", "r")) !== FALSE) {
-						$i = 0;
-					  	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {  // baca dari csv per row
-					  		$cabor_array = [];			// exmpl:"cabor_name1", "gold", "silver", "bronze"
-					  		if ($i > 0) {	
-					  			$cabor_name = $data[0];		// current row cabor name
-						    	$col_num = count($data);		// row num exclude cabor
+					<!-- READ CSV FILE -->
+					<?php include 'readcsv.php'; ?>
 
-						    	$medal_divider = 0;				// divide cabor per country
-						    	$country_counter = 0;
-						    	for ($col = 1; $col < $col_num; $col++) {
-						    		// echo $data[$col];
-						    		if ($medal_divider == 0) {
-						    			array_push($cabor_array, $cabor_name);
-						    			array_push($cabor_array, $data[$col]);
-						    		} else if ($medal_divider < 3) {
-						    			array_push($cabor_array, $data[$col]);
-						    		}
-						    		// print_r($cabor_array);
-						    		$medal_divider++;
+					<script type="text/javascript">
+						// PHP array to JS array
+						<?php
+							$php_array = $country_array['Thailand'];
+							$js_array = json_encode($php_array);
+							echo "var country_array = ". $js_array . ";\n";
+						?>
 
-						    		if ($medal_divider == 4) {
-						    			$medal_divider = 0;
-						    			array_push($country_array[$country[$country_counter]], $cabor_array);
-						    			$cabor_array = [];
-						    			$country_counter++;
-						    			// echo $country_counter;
-						    			if ($col == 45) {
-						    				$country_counter = 0;
-						    			}
-						    		}
-						    	}
-					  		}
-							$i += 1;
-					  	}
-						fclose($handle);
-				    	// foreach ($country_array as $key1 => $country_temp) {
-				    	// 	echo $key1;
-				    	// 	echo "<br>";
-				    	// 	foreach ($country_temp as $key2 => $value) {
-				    	// 		foreach ($value as $haha) {
-				    	// 			echo $haha;
-				    	// 			echo ", ";
-				    	// 		}
-				    	// 		echo "<br>";
-				    	// 	}
-				    	// echo "<br><br>";
-				    	// }
-					}
-				?>
+						// string to int (for gold, silver, and bronze col)
+						for (var i = 0; i < country_array.length; i++) {
+							var cabor_array = country_array[i];
+							for (var j = 1; j < cabor_array.length; j++) {
+								cabor_array[j] = parseInt(cabor_array[j]);
+							}
+						}
+						// console.log(country_array);
+
+						// chart
+						google.charts.load("current", {packages:["corechart"]});
+						google.charts.setOnLoadCallback(drawChart);
+
+						var header = [["Country", "Gold", "Silver", "Bronze"]];
+						var d = header.concat(country_array);
+						// console.log(d);
+
+						function drawChart() {
+						  var data = google.visualization.arrayToDataTable(d);
+
+						  var view = new google.visualization.DataView(data);
+						  
+						  var options = {
+						    legend: { position: "none" },
+						    hAxis: { textPosition: "none" },
+						    vAxis: { textPosition: "none" },
+						  };
+						  var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+						  chart.draw(view, options);
+						}
+					</script>
+
+					<div id="barchart_values" style="width: 900px; height: 500px;"></div>
 				</table>
 			</div>
 		  </div>
