@@ -21,18 +21,28 @@
 		<!-- <script type="text/javascript" src="js/index.js" charset="utf-8"></script> -->
 	</head>	
 	<body>
-		<h1 class="title">SEA GAMES OVERVIEW</h1>
-		<div class="controller">
-			<form action="JavaScript:getData()">
-				<input type="radio" id="medal" name="medal" value="gold" /> Gold<br/>
-				<input type="radio" id="medal" name="medal" value="silver" /> Silver<br/>
-				<input type="radio" id="medal" name="medal" value="brown" /> Bronze<br/>
-				<input type="submit" value="Apply" class="btn btn-info">
-			</form>
+		<div class="container">
+			<h1 class="title">SEA GAMES OVERVIEW</h1>
+			<div class="row">
+				<div class="col-md-9">
+					<?php include 'drawChart.php'; ?>
+					<script type="text/javascript">
+						getData();
+					</script>
+					<div id="barchart_values" style="width: 900px; height: 500px;"></div>
+				</div>
+				<div class="col-md-3">
+					<div class="controller">
+						<form action="JavaScript:getData()">
+							Medal: <br />
+							<input type="radio" id="medal" name="medal" value="gold" /> Gold<br/>
+							<input type="radio" id="medal" name="medal" value="silver" /> Silver<br/>
+							<input type="radio" id="medal" name="medal" value="brown" /> Bronze<br/>
+							<input type="submit" value="Apply" class="btn btn-info">
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
-  	<table style="width: 100%">
-			<?php include 'drawChart.php'; ?>
-			<div id="barchart_values" style="width: 900px; height: 500px;"></div>
-		</table>
 	</body>
 </html>

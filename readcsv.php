@@ -4,8 +4,8 @@
 	// 	"country": "Thailand",
 	// 	"data": [["cabor_name1", "gold", "silver", "bronze"], ["cabor_name2", "gold", "silver", "bronze"], ...]
 	// }
-	$country = ["Thailand", "Indonesia", "Malaysia", "Filipina", "Singapore", "Vietnam", "Myanmar", "Laos", "Kamboja", "Brunei", "Timor Timur"];
-	$country_array = array ("Thailand" => [],"Indonesia" => [],"Malaysia" => [],"Filipina" => [],"Singapore" => [],"Vietnam" => [],"Myanmar" => [],"Laos" => [],"Kamboja" => [],"Brunei" => [],"Timor Timur" => []);
+	$country = ["Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
+	$country_array = array ("Thailand" => [],"Indonesia" => [],"Malaysia" => [],"Philippines" => [],"Singapore" => [],"Vietnam" => [],"Myanmar" => [],"Laos" => [],"Cambodia" => [],"Brunei" => [],"Timor-Leste" => []);
 	if (($handle = fopen("csv/medal.csv", "r")) !== FALSE) {
 		$i = 0;
 	  	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {  // baca dari csv per row

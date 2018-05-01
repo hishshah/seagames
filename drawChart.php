@@ -21,12 +21,18 @@
 			}
 
 			if (val == "gold") {
-				cabor_array.splice(2, 2);
+				cabor_array[2] = 0;
+				cabor_array[3] = 0;
+				// cabor_array.splice(2, 2);
 			} else if (val == "silver") {
-				cabor_array.splice(1, 1);
-				cabor_array.splice(2, 1);
+				// cabor_array.splice(1, 1);
+				// cabor_array.splice(2, 1);
+				cabor_array[1] = 0;
+				cabor_array[3] = 0;
 			} else if (val == "brown") {
-				cabor_array.splice(1, 2);
+				// cabor_array.splice(1, 2);
+				cabor_array[1] = 0;
+				cabor_array[2] = 0;
 			}
 			
 			cabor_array.push(val);
@@ -37,7 +43,7 @@
 		google.charts.load("current", {packages:["corechart"]});
 		google.charts.setOnLoadCallback(drawChart);
 
-		var header = [["Country", "Medal", { role: "style" }]];
+		var header = [["Country", "Gold", "Silver", "Bronze", { role: "style" }]];
 		var d = header.concat(country_array);
 		// console.log(d);
 
@@ -46,10 +52,22 @@
 
 		  var view = new google.visualization.DataView(data);
 		  
+		  if (val == null) {
+		  	var isStacked = "percent";
+		  } else {
+		  	var isStacked = "absolute";
+		  }
+
 		  var options = {
 		    legend: { position: "none" },
 		    hAxis: { textPosition: "none"},
 		    // vAxis: { textPosition: "none"},
+		    isStacked: isStacked,
+		    series: {
+	          0:{color:'gold'},
+	          1:{color:'silver'},
+	          2:{color:'brown'},
+	        }
 		  };
 		  var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
 		  chart.draw(view, options);
