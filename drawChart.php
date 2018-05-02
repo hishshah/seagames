@@ -69,13 +69,6 @@
 			var header = [["Country", "Gold", "Silver", "Bronze"]];
 			var d = header.concat(country_array[current_country]);
 
-<<<<<<< HEAD
-			console.log(d);
-
-			count++;
-
-			console.log(count);
-=======
 			// console.log(d);
 			count++;
 			if (count == 1) {
@@ -83,36 +76,17 @@
 		  } else {
 		  	var textPosition = "none";
 		  }
->>>>>>> 2939991ba460f1973238b538b736412fa7234654
 
 			function drawChart() {
 				// console.log("drawChart" + element);
 			  var data = google.visualization.arrayToDataTable(d);
 
 			  var view = new google.visualization.DataView(data);
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 2939991ba460f1973238b538b736412fa7234654
-			  // if (medal == null) {
-			  // 	var isStacked = "percent";
-			  // } else {
-			  // 	var isStacked = "absolute";
-			  // }
-<<<<<<< HEAD
-=======
-			  // console.log(count);
->>>>>>> 2939991ba460f1973238b538b736412fa7234654
 
 			  var options = {
 			    legend: { position: "none" },
 			    hAxis: { textPosition: "none"},
-<<<<<<< HEAD
-			    // vAxis: { textPosition: "none"},
-=======
 			    vAxis: { textPosition: "none"},
->>>>>>> 2939991ba460f1973238b538b736412fa7234654
 			    isStacked: true,
 			    series: {
 		          0:{color:"gold"},
