@@ -41,27 +41,22 @@
 						  getData();
 						</script>
 						<table style="table-layout: fixed; width:200%;">
-							<tr style="font-size: 11px; text-align: center; white-space:nowrap; overflow:hidden;">
-								<th>Thailand</th>
-								<th>Indonesia</th>
-								<th>Malaysia</th>
-								<th>Philippines</th>
-								<th>Singapore</th>
-								<th>Vietnam</th>
-								<th>Myanmar</th>
-								<th>Laos</th>
-								<th>Cambodia</th>
-								<th>Brunei</th>
-								<th>East Timor</th>
-							</tr>
-							<tr>
+								<tr style="font-size: 11px; text-align: center; white-space:nowrap; overflow:hidden;">
 								<?php
 									$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
+									sort($country);
 									for ($i = 1; $i < 12; $i++) {
-										echo '<td>
-											    	<div id="barchart_values_'. $country[$i] .'" style="height: 500px; width= 100%"></div>
-												</td>';
+											echo '<th>'.$country[$i].'</th>';
 									}
+								?>
+								</tr>
+								<tr>
+								<?php
+										for ($i = 1; $i < 12; $i++) {
+											echo '<td>
+												    	<div id="barchart_values_'. $country[$i] .'" style="height: 500px; width= 100%"></div>
+													</td>';
+										}
 								?>
 							</tr>
 						</table>
@@ -83,6 +78,16 @@
 							</div>
 							<div class="checkbox">
 							  <label><input type="checkbox" name="medal" id="medal-3" value="3" checked>Bronze</label>
+							</div>
+
+							<br/><br/><br/>
+
+							<b>Sort country by:</b> <br />
+							<div class="radio">
+							  <label><input type="radio" name="sort-country" value="alphabet" checked>Alphabet</label>
+							</div>
+							<div class="radio">
+							  <label><input type="radio" name="sort-country" value="alphabet">Best Medalist</label>
 							</div>
 
 							<br/><br/><br/>
