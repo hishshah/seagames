@@ -25,11 +25,87 @@
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
 			<div class="row">
 				<div class="col-md-9">
-					<?php include 'drawChart.php'; ?>
-					<script type="text/javascript">
-						getData();
-					</script>
-					<div id="barchart_values" style="width:100%; height: 500px;"></div>
+					<table style="table-layout: fixed; width:100%">
+						<tr>
+						    <td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values1" style="width:100%; height: 500px;"></div>
+							</td>
+						    <td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values2" style="width:100%; height: 500px;"></div>
+							</td>			
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values3" style="width:100%; height: 500px;"></div>
+							</td>			    
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values4" style="width:100%; height: 500px;"></div>
+							</td>
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values5" style="width:100%; height: 500px;"></div>
+							</td>
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values6" style="width:100%; height: 500px;"></div>
+							</td>
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values7" style="width:100%; height: 500px;"></div>
+							</td>
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values8" style="width:100%; height: 500px;"></div>
+							</td>
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values9" style="width:100%; height: 500px;"></div>
+							</td>
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values10" style="width:100%; height: 500px;"></div>
+							</td>
+							<td>
+						    	<?php include 'drawChart.php'; ?>
+								<script type="text/javascript">
+									getData();
+								</script>
+								<div id="barchart_values11" style="width:100%; height: 500px;"></div>
+							</td>
+						</tr>
+					<table>					
 				</div>
 				<div class="col-md-3">
 					<div class="controller">

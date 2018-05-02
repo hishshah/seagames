@@ -63,7 +63,7 @@
 		  var options = {
 		    legend: { position: "none" },
 		    hAxis: { textPosition: "none"},
-		    // vAxis: { textPosition: "none"},
+		    vAxis: { textPosition: "none"},
 		    isStacked: isStacked,
 		    series: {
 	          0:{color:"gold"},
@@ -72,8 +72,28 @@
 	        },
 	        chartArea: {"height": "100%"},
 		  };
-		  var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
-		  chart.draw(view, options);
+		  var chart1 = new google.visualization.BarChart(document.getElementById("barchart_values1"));
+		  chart1.draw(view, options);
+		  var chart2 = new google.visualization.BarChart(document.getElementById("barchart_values2"));
+		  chart2.draw(view, options);
+		  var chart3 = new google.visualization.BarChart(document.getElementById("barchart_values3"));
+		  chart3.draw(view, options);
+		  var chart4 = new google.visualization.BarChart(document.getElementById("barchart_values4"));
+		  chart4.draw(view, options);
+		  var chart5 = new google.visualization.BarChart(document.getElementById("barchart_values5"));
+		  chart5.draw(view, options);
+		  var chart6 = new google.visualization.BarChart(document.getElementById("barchart_values6"));
+		  chart6.draw(view, options);
+		  var chart7 = new google.visualization.BarChart(document.getElementById("barchart_values7"));
+		  chart7.draw(view, options);
+		  var chart8 = new google.visualization.BarChart(document.getElementById("barchart_values8"));
+		  chart8.draw(view, options);
+		  var chart9 = new google.visualization.BarChart(document.getElementById("barchart_values9"));
+		  chart9.draw(view, options);
+		  var chart10 = new google.visualization.BarChart(document.getElementById("barchart_values10"));
+		  chart10.draw(view, options);
+		  var chart11 = new google.visualization.BarChart(document.getElementById("barchart_values11"));
+		  chart11.draw(view, options);
 		}
 	}
 </script>
