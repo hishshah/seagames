@@ -25,11 +25,23 @@
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
 			<div class="row">
 				<div class="col-md-9">
-					<?php include 'drawChart.php'; ?>
-					<script type="text/javascript">
-						getData();
-					</script>
-					<div id="barchart_values" style="width:100%; height: 500px;"></div>
+					<div class="container-fluid">
+						<div class="row flex-row flex-nowrap">
+							<?php include 'drawChart.php'; ?>
+							<script type="text/javascript">
+							  getData();
+							</script>
+							<?php
+								$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
+								for ($i = 1; $i < 12; $i++) {
+									echo '<div class="col-md-3">
+													<div id="barchart_values_'. $country[$i] .'" style="height: 100%; width= 100%"></div>
+													<p>a</p>
+												</div>';
+								}
+							?>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="controller">
