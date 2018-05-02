@@ -29,16 +29,35 @@
 					<script type="text/javascript">
 						getData();
 					</script>
-					<div id="barchart_values" style="width: 900px; height: 500px;"></div>
+					<div id="barchart_values" style="width:100%; height: 500px;"></div>
 				</div>
 				<div class="col-md-3">
 					<div class="controller">
 						<form action="JavaScript:getData()">
 							Medal: <br />
-							<input type="radio" id="medal" name="medal" value="gold" /> Gold<br/>
-							<input type="radio" id="medal" name="medal" value="silver" /> Silver<br/>
-							<input type="radio" id="medal" name="medal" value="brown" /> Bronze<br/>
-							<input type="submit" value="Apply" class="btn btn-info">
+							<label class="radio-inline">
+								<input type="radio" name="medal" id="medal" value="gold">Gold
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="medal" id="medal" value="silver">Silver
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="medal" id="medal" value="bronze">Bronze
+							</label>
+							<br/><br/><br/>
+
+							Year: <br />
+							<select id="year" name="year" class="form-control" style="width: 30%">
+							  <option value="2017">2017</option>
+							  <option value="2015">2015</option>
+							  <option value="2013">2013</option>
+							  <option value="2011">2011</option>
+							  <option value="2009">2009</option>
+							  <option value="2007">2007</option>
+							  <option value="2005">2005</option>
+							</select>
+							<br />
+							<input type="submit" value="Apply" class="btn btn-success">
 						</form>
 					</div>
 				</div>

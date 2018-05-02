@@ -1,10 +1,12 @@
-<!-- READ CSV FILE -->
-<?php include 'readcsv.php'; ?>
-
 <script type="text/javascript">
 	function getData() {
-		var val = $("input:radio[name=medal]:checked").val()
-		// console.log(val);
+		// READ CSV FILE
+		var year = $("#year").val();
+		
+		<?php include 'readcsv.php'; ?>
+		
+		var medal = $("input:radio[name=medal]:checked").val();
+		// console.log(medal);
 
 		// PHP array to JS array
 		<?php
@@ -20,22 +22,22 @@
 				cabor_array[j] = parseInt(cabor_array[j]);
 			}
 
-			if (val == "gold") {
+			if (medal == "gold") {
 				cabor_array[2] = 0;
 				cabor_array[3] = 0;
 				// cabor_array.splice(2, 2);
-			} else if (val == "silver") {
+			} else if (medal == "silver") {
 				// cabor_array.splice(1, 1);
 				// cabor_array.splice(2, 1);
 				cabor_array[1] = 0;
 				cabor_array[3] = 0;
-			} else if (val == "brown") {
+			} else if (medal == "brown") {
 				// cabor_array.splice(1, 2);
 				cabor_array[1] = 0;
 				cabor_array[2] = 0;
 			}
 			
-			cabor_array.push(val);
+			cabor_array.push(medal);
 		}
 		// console.log(country_array);
 
@@ -52,7 +54,7 @@
 
 		  var view = new google.visualization.DataView(data);
 		  
-		  if (val == null) {
+		  if (medal == null) {
 		  	var isStacked = "percent";
 		  } else {
 		  	var isStacked = "absolute";
@@ -64,10 +66,11 @@
 		    // vAxis: { textPosition: "none"},
 		    isStacked: isStacked,
 		    series: {
-	          0:{color:'gold'},
-	          1:{color:'silver'},
-	          2:{color:'brown'},
-	        }
+	          0:{color:"gold"},
+	          1:{color:"silver"},
+	          2:{color:"brown"},
+	        },
+	        chartArea: {"height": "100%"},
 		  };
 		  var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
 		  chart.draw(view, options);
