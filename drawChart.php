@@ -21,6 +21,8 @@
 		?>
 		var count = 0;
 		var country = ["Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
+
+		var count = 0;
 		country.forEach(function(current_country) {
 			// filtering
 			for (var i = 0; i < country_array[current_country].length; i++) {
@@ -67,28 +69,50 @@
 			var header = [["Country", "Gold", "Silver", "Bronze"]];
 			var d = header.concat(country_array[current_country]);
 
+<<<<<<< HEAD
 			console.log(d);
 
 			count++;
 
 			console.log(count);
+=======
+			// console.log(d);
+			count++;
+			if (count == 1) {
+		  	var textPosition = "out";
+		  } else {
+		  	var textPosition = "none";
+		  }
+>>>>>>> 2939991ba460f1973238b538b736412fa7234654
 
 			function drawChart() {
 				// console.log("drawChart" + element);
 			  var data = google.visualization.arrayToDataTable(d);
 
 			  var view = new google.visualization.DataView(data);
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> 2939991ba460f1973238b538b736412fa7234654
 			  // if (medal == null) {
 			  // 	var isStacked = "percent";
 			  // } else {
 			  // 	var isStacked = "absolute";
 			  // }
+<<<<<<< HEAD
+=======
+			  // console.log(count);
+>>>>>>> 2939991ba460f1973238b538b736412fa7234654
 
 			  var options = {
 			    legend: { position: "none" },
 			    hAxis: { textPosition: "none"},
+<<<<<<< HEAD
 			    // vAxis: { textPosition: "none"},
+=======
+			    vAxis: { textPosition: "none"},
+>>>>>>> 2939991ba460f1973238b538b736412fa7234654
 			    isStacked: true,
 			    series: {
 		          0:{color:"gold"},
@@ -97,7 +121,7 @@
 		        },
 		        chartArea: {"height": "100%"},
 			  };
-				console.log(current_country);
+				// console.log(current_country);
 			  var chart = new google.visualization.BarChart(document.getElementById("barchart_values_" + current_country));
 			  chart.draw(view, options);
 			}
