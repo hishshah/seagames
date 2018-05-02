@@ -18,8 +18,8 @@
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 		<link href="css/main.css" rel="stylesheet">
-		<!-- <script type="text/javascript" src="js/index.js" charset="utf-8"></script> -->
-	</head>	
+		<!-- <script type="text/javascript" src="js/filter.js" charset="utf-8"></script> -->
+	</head>
 	<body>
 		<div class="container">
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
@@ -70,19 +70,21 @@
 				<div class="col-md-1">
 					<div class="controller">
 						<form action="JavaScript:getData()">
-							Medal: <br />
-							<label class="radio">
-								<input type="radio" name="medal" id="medal" value="gold">Gold
-							</label>
-							<label class="radio">
-								<input type="radio" name="medal" id="medal" value="silver">Silver
-							</label>
-							<label class="radio">
-								<input type="radio" name="medal" id="medal" value="bronze">Bronze
-							</label>
-							<label class="radio">
-								<input type="radio" name="medal" id="medal" value="total">Total
-							</label>
+							<b>Medal:</b> <br />
+
+							<div class="checkbox">
+							  <label><input type="checkbox" name="medal" id="medal-0" value="0" checked>All</label>
+							</div>
+							<div class="checkbox">
+							  <label><input type="checkbox" name="medal" id="medal-1" value="1" checked>Gold</label>
+							</div>
+							<div class="checkbox">
+							  <label><input type="checkbox" name="medal" id="medal-2" value="2" checked>Silver</label>
+							</div>
+							<div class="checkbox">
+							  <label><input type="checkbox" name="medal" id="medal-3" value="3" checked>Bronze</label>
+							</div>
+
 							<br/><br/><br/>
 
 							Year: <br />
