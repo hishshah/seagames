@@ -25,15 +25,7 @@
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
 			<div class="row">
 				<div class="col-md-10">
-					<div class="col-xs-2" style="font-size: 12px; padding-top: 15px; line-height: 1.5; text-align:right; white-space:nowrap; overflow:hidden;">
-						<?php
-							include 'readcsv.php';
-							$php__array = $cabor;
-
-							for ($i = 0; $i < sizeof($cabor); $i++) {
-								echo $cabor[$i] . '<br/>';
-							}
-						?>
+					<div class="col-xs-2" style="font-size: 12px; padding-top: 15px; line-height: 1.5; text-align:right; white-space:nowrap; overflow:hidden;" id="cabor">
 					</div>
 					<div class="col-xs-10" style="overflow-x:scroll; overflow-y:hidden">
 						<?php include 'drawChart.php'; ?>
@@ -65,6 +57,19 @@
 				<div class="col-md-1">
 					<div class="controller">
 						<form action="JavaScript:getData()">
+							Year: <br />
+							<select id="year" name="year" class="form-control" style="width: 100%">
+							  <option value="2017">2017</option>
+							  <option value="2015">2015</option>
+							  <option value="2013">2013</option>
+							  <option value="2011">2011</option>
+							  <option value="2009">2009</option>
+							  <option value="2007">2007</option>
+							  <option value="2005">2005</option>
+							</select>
+
+							<br/><br/><br/>
+
 							<b>Medal:</b> <br />
 
 							<div class="checkbox">
@@ -89,19 +94,6 @@
 							<div class="radio">
 							  <label><input type="radio" name="sort-country" value="alphabet">Best Medalist</label>
 							</div>
-
-							<br/><br/><br/>
-
-							Year: <br />
-							<select id="year" name="year" class="form-control" style="width: 30%">
-							  <option value="2017">2017</option>
-							  <option value="2015">2015</option>
-							  <option value="2013">2013</option>
-							  <option value="2011">2011</option>
-							  <option value="2009">2009</option>
-							  <option value="2007">2007</option>
-							  <option value="2005">2005</option>
-							</select>
 							<br />
 							<input type="submit" value="Apply" class="btn btn-success">
 						</form>

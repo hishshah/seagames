@@ -1,30 +1,38 @@
 <?php include 'filterMedal.php'; ?>
 <script type="text/javascript">
+	
 	function getData() {
+		// GET MEDAL VALUE
 		var checkedMedal = getMedalFilterValue();
-		console.log("checkedMedal", checkedMedal);
+		// console.log("checkedMedal", checkedMedal);
 
-		// READ CSV FILE
-		var year = $("#year").val();
-		<?php include 'readcsv.php'; ?>
+		// filter year
+		<?php include 'filteryear.php'; ?>
 
-		<?php
-			$php_country_array = $country_array;
-			$js_country_array = json_encode($php_country_array);
-			echo "var country_array = ". $js_country_array . ";\n";
-		?>
 		var count = 0;
 		var country = ["Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
 
+		var year = getYear()
+		
+		// CABOR COLUMN
+		var cabor = '<div class="col-xs-2" style="font-size: 12px; padding-top: 15px; line-height: 1.5; text-align:right; white-space:nowrap; overflow:hidden;" id="cabor">';
+		for (var i = 0; i < cabor_year[year][0].length; i++) {
+			cabor += cabor_year[year][0][i];
+			cabor += '<br />';
+		}
+		cabor += '</div>';
+
+		$('#cabor').replaceWith(cabor);
+
+
+		// LOOP
 		country.forEach(function(current_country) {
-			// filtering
+			// filter medal
 			for (var i = 0; i < country_array[current_country].length; i++) {
 				var cabor_array = country_array[current_country][i];
 				for (var j = 1; j < cabor_array.length; j++) { // string to int
 					cabor_array[j] = parseInt(cabor_array[j]);
 				}
-
-
 				if (!checkedMedal.includes("0")) {
 					if (!checkedMedal.includes("1")) {
 							cabor_array[1] = 0;
