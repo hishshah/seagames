@@ -9,91 +9,77 @@
 		// console.log(medal);
 
 		// PHP array to JS array
+		// console.log("loop" + element);
 		<?php
-			$php_array = $country_array['Thailand'];
-			$js_array = json_encode($php_array);
-			echo "var country_array = ". $js_array . ";\n";
-		?>
-
-		// filtering
-		for (var i = 0; i < country_array.length; i++) {
-			var cabor_array = country_array[i];
-			for (var j = 1; j < cabor_array.length; j++) { // string to int
-				cabor_array[j] = parseInt(cabor_array[j]);
+			$php_country_array = $country_array;
+			$js_country_array = json_encode($php_country_array);
+			echo "var country_array = ". $js_country_array . ";\n";
+		?>	
+		
+		var country = ["Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
+		country.forEach(function(current_country) {
+			// filtering
+			for (var i = 0; i < country_array[current_country].length; i++) {
+				var cabor_array = country_array[current_country][i];
+				for (var j = 1; j < cabor_array.length; j++) { // string to int
+					cabor_array[j] = parseInt(cabor_array[j]);
+				}
+	
+				if (medal == "gold") {
+					cabor_array[2] = 0;
+					cabor_array[3] = 0;
+					// cabor_array.splice(2, 2);
+				} else if (medal == "silver") {
+					// cabor_array.splice(1, 1);
+					// cabor_array.splice(2, 1);
+					cabor_array[1] = 0;
+					cabor_array[3] = 0;
+				} else if (medal == "brown") {
+					// cabor_array.splice(1, 2);
+					cabor_array[1] = 0;
+					cabor_array[2] = 0;
+				}
+				
+				cabor_array.push(medal);
 			}
+			// console.log(country_array);
+	
+			// chart
+			google.charts.load("current", {packages:["corechart"]});
+			google.charts.setOnLoadCallback(drawChart);
+	
+			var header = [["Country", "Gold", "Silver", "Bronze", { role: "style" }]];
+			var d = header.concat(country_array[current_country]);
 
-			if (medal == "gold") {
-				cabor_array[2] = 0;
-				cabor_array[3] = 0;
-				// cabor_array.splice(2, 2);
-			} else if (medal == "silver") {
-				// cabor_array.splice(1, 1);
-				// cabor_array.splice(2, 1);
-				cabor_array[1] = 0;
-				cabor_array[3] = 0;
-			} else if (medal == "brown") {
-				// cabor_array.splice(1, 2);
-				cabor_array[1] = 0;
-				cabor_array[2] = 0;
+
+			function drawChart() {
+				// console.log("drawChart" + element);
+			  var data = google.visualization.arrayToDataTable(d);
+
+			  var view = new google.visualization.DataView(data);
+			  
+			  if (medal == null) {
+			  	var isStacked = "percent";
+			  } else {
+			  	var isStacked = "absolute";
+			  }
+
+			  var options = {
+			    legend: { position: "none" },
+			    hAxis: { textPosition: "none"},
+			    // vAxis: { textPosition: "none"},
+			    isStacked: isStacked,
+			    series: {
+		          0:{color:"gold"},
+		          1:{color:"silver"},
+		          2:{color:"brown"},
+		        },
+		        chartArea: {"height": "100%"},
+			  };
+				console.log(current_country);
+			  var chart = new google.visualization.BarChart(document.getElementById("barchart_values_" + current_country));
+			  chart.draw(view, options);
 			}
-			
-			cabor_array.push(medal);
-		}
-		// console.log(country_array);
-
-		// chart
-		google.charts.load("current", {packages:["corechart"]});
-		google.charts.setOnLoadCallback(drawChart);
-
-		var header = [["Country", "Gold", "Silver", "Bronze", { role: "style" }]];
-		var d = header.concat(country_array);
-		// console.log(d);
-
-		function drawChart() {
-		  var data = google.visualization.arrayToDataTable(d);
-
-		  var view = new google.visualization.DataView(data);
-		  
-		  if (medal == null) {
-		  	var isStacked = "percent";
-		  } else {
-		  	var isStacked = "absolute";
-		  }
-
-		  var options = {
-		    legend: { position: "none" },
-		    hAxis: { textPosition: "none"},
-		    vAxis: { textPosition: "none"},
-		    isStacked: isStacked,
-		    series: {
-	          0:{color:"gold"},
-	          1:{color:"silver"},
-	          2:{color:"brown"},
-	        },
-	        chartArea: {"height": "100%"},
-		  };
-		  var chart1 = new google.visualization.BarChart(document.getElementById("barchart_values1"));
-		  chart1.draw(view, options);
-		  var chart2 = new google.visualization.BarChart(document.getElementById("barchart_values2"));
-		  chart2.draw(view, options);
-		  var chart3 = new google.visualization.BarChart(document.getElementById("barchart_values3"));
-		  chart3.draw(view, options);
-		  var chart4 = new google.visualization.BarChart(document.getElementById("barchart_values4"));
-		  chart4.draw(view, options);
-		  var chart5 = new google.visualization.BarChart(document.getElementById("barchart_values5"));
-		  chart5.draw(view, options);
-		  var chart6 = new google.visualization.BarChart(document.getElementById("barchart_values6"));
-		  chart6.draw(view, options);
-		  var chart7 = new google.visualization.BarChart(document.getElementById("barchart_values7"));
-		  chart7.draw(view, options);
-		  var chart8 = new google.visualization.BarChart(document.getElementById("barchart_values8"));
-		  chart8.draw(view, options);
-		  var chart9 = new google.visualization.BarChart(document.getElementById("barchart_values9"));
-		  chart9.draw(view, options);
-		  var chart10 = new google.visualization.BarChart(document.getElementById("barchart_values10"));
-		  chart10.draw(view, options);
-		  var chart11 = new google.visualization.BarChart(document.getElementById("barchart_values11"));
-		  chart11.draw(view, options);
-		}
+		});
 	}
 </script>
