@@ -24,49 +24,64 @@
 		<div class="container">
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
 			<div class="row">
-				<div class="col-md-9">
-							<?php include 'drawChart.php'; ?>
-							<script type="text/javascript">
-							  getData();
-							</script>
-							<table style="table-layout: fixed; width:100%">
-								<tr>
-									<th>Thailand</th>
-									<th>Indonesia</th>
-									<th>Malaysia</th>
-									<th>Philippines</th>
-									<th>Singapore</th>
-									<th>Vietnam</th>
-									<th>Myanmar</th>
-									<th>Laos</th>
-									<th>Cambodia</th>
-									<th>Brunei</th>
-									<th>East Timor</th>
-								</tr>
-								<tr>
-									<?php
-										$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
-										for ($i = 1; $i < 12; $i++) {
-											echo '<td>
-												    	<div id="barchart_values_'. $country[$i] .'" style="height: 500px; width= 100%"></div>
-													</td>';
-										}
-									?>
-								</tr>
-							</table>
+				<div class="col-md-10">
+					<div class="col-xs-2" style="font-size: 12px; padding-top: 15px; line-height: 1.5; white-space:nowrap; overflow:hidden;">
+						<?php
+							include 'readcsv.php';
+							$php__array = $cabor;
+
+							for ($i = 0; $i < sizeof($cabor); $i++) {
+								echo $cabor[$i] . '<br/>';
+							}
+						?>
+					</div>
+					<div class="col-xs-10">
+						<?php include 'drawChart.php'; ?>
+						<script type="text/javascript">
+						  getData();
+						</script>
+						<table style="table-layout: fixed; width:100%;">
+							<tr style="font-size: 11px; text-align: center; white-space:nowrap; overflow:hidden;">
+								<th>Thailand</th>
+								<th>Indonesia</th>
+								<th>Malaysia</th>
+								<th>Philippines</th>
+								<th>Singapore</th>
+								<th>Vietnam</th>
+								<th>Myanmar</th>
+								<th>Laos</th>
+								<th>Cambodia</th>
+								<th>Brunei</th>
+								<th>East Timor</th>
+							</tr>
+							<tr>
+								<?php
+									$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
+									for ($i = 1; $i < 12; $i++) {
+										echo '<td>
+											    	<div id="barchart_values_'. $country[$i] .'" style="height: 500px; width= 100%"></div>
+												</td>';
+									}
+								?>
+							</tr>
+						</table>
+					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-1">
 					<div class="controller">
 						<form action="JavaScript:getData()">
 							Medal: <br />
-							<label class="radio-inline">
+							<label class="radio">
 								<input type="radio" name="medal" id="medal" value="gold">Gold
 							</label>
-							<label class="radio-inline">
+							<label class="radio">
 								<input type="radio" name="medal" id="medal" value="silver">Silver
 							</label>
-							<label class="radio-inline">
+							<label class="radio">
 								<input type="radio" name="medal" id="medal" value="bronze">Bronze
+							</label>
+							<label class="radio">
+								<input type="radio" name="medal" id="medal" value="total">Total
 							</label>
 							<br/><br/><br/>
 

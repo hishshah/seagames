@@ -6,12 +6,14 @@
 	// }
 	$country = ["Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
 	$country_array = array ("Thailand" => [],"Indonesia" => [],"Malaysia" => [],"Philippines" => [],"Singapore" => [],"Vietnam" => [],"Myanmar" => [],"Laos" => [],"Cambodia" => [],"Brunei" => [],"Timor-Leste" => []);
+	$cabor = [];
 	if (($handle = fopen("csv/medal.csv", "r")) !== FALSE) {
 		$i = 0;
 	  	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {  // baca dari csv per row
 	  		$cabor_array = [];			// exmpl:"cabor_name1", "gold", "silver", "bronze"
 	  		if ($i > 0) {	
 	  			$cabor_name = $data[0];		// current row cabor name
+	  			array_push($cabor, $cabor_name);
 		    	$col_num = count($data);		// row num exclude cabor
 
 		    	$medal_divider = 0;				// divide cabor per country
