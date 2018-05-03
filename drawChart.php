@@ -79,5 +79,88 @@
 			  chart.draw(view, options);
 			}
 		});
+		
+		// draw rank chart
+		google.charts.load("current", {packages:['corechart']});
+	    google.charts.setOnLoadCallback(drawRankChart);
+	    function drawRankChart() {
+	      var dataArray = [];
+	      if (year == 2017){
+	      	dataArray = [
+					        ["Country", "Gold", "Silver", "Bronze" ],
+					        ["Malaysia", 145, 90, 86 ],
+					        ["Thailand", 71, 84, 88 ],
+					        ["Vietnam", 59, 49, 60 ]
+					    ];
+	      } else if (year == 2015){
+	      	dataArray = [
+					        ["Country", "Gold", "Silver", "Bronze" ],
+					        ["Thailand", 95, 83, 69 ],
+					        ["Singapore", 84, 73, 102 ],
+					        ["Vietnam", 73, 53, 60 ]
+					    ];
+	      } else if (year == 2013){
+	      	dataArray = [
+					        ["Country", "Gold", "Silver", "Bronze" ],
+					        ["Thailand", 108, 94, 82 ],
+					        ["Myanmar", 84, 63, 84 ],
+					        ["Vietnam", 74, 85, 86 ]
+					    ];
+	      } else if (year == 2011){
+	      	dataArray = [
+					        ["Country", "Gold", "Silver", "Bronze" ],
+					        ["Indonesia", 182, 151, 143 ],
+					        ["Thailand", 109, 101, 119 ],
+					        ["Vietnam", 96, 92, 100 ]
+					    ];
+	      } else if (year == 2009){
+	      	dataArray = [
+					        ["Country", "Gold", "Silver", "Bronze" ],
+					        ["Thailand", 86, 83, 97 ],
+					        ["Vietnam", 83, 75, 57 ],
+					        ["Indonesia", 43, 53, 74 ]
+					    ];
+	      } else if (year == 2007){
+	      	dataArray = [
+					        ["Country", "Gold", "Silver", "Bronze" ],
+					        ["Thailand", 183, 123, 103 ],
+					        ["Malaysia", 68, 52, 96 ],
+					        ["Vietnam", 64, 58, 82 ]
+					    ];
+	      } else if (year == 2005){
+	      	dataArray = [
+					        ["Country", "Gold", "Silver", "Bronze" ],
+					        ["Philippines", 112, 85, 93 ],
+					        ["Thailand", 87, 79, 117 ],
+					        ["Vietnam", 71, 71, 86 ]
+					    ];
+	      }
+	      var data = google.visualization.arrayToDataTable(dataArray);
+
+	      var view = new google.visualization.DataView(data);
+	      // view.setColumns([0, 1,
+	      //                  { calc: "stringify",
+	      //                    sourceColumn: 1,
+	      //                    type: "string",
+	      //                    role: "annotation" },
+	      //                  2]);
+
+	      var options = {
+	        title: "Top Medalist",
+	        width: 300,
+	        height: 200,
+	        bar: {groupWidth: "95%"},
+	        legend: { position: "none" },
+	        isStacked: true,
+	        series: {
+	          0:{color:"gold"},
+	          1:{color:"silver"},
+	          2:{color:"brown"},
+	        },
+	      };
+	      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+	      chart.draw(view, options);
+	  }
+
 	}
 </script>

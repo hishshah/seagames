@@ -96,6 +96,8 @@
 							</div>
 							<br />
 							<input type="submit" value="Apply" class="btn btn-success">
+							<br/>
+							<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
 						</form>
 					</div>
 				</div>
