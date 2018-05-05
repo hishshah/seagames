@@ -9,13 +9,12 @@
 		// filter year
 		<?php include 'filteryear.php'; ?>
 
-		var count = 0;
 		var country = ["Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
 
 		var year = getYear()
 		
 		// CABOR COLUMN
-		var cabor = '<div class="col-xs-1" style="font-size: 8px; padding-top: 15px; line-height: 1.5; text-align:right; white-space:nowrap; overflow:hidden; padding-right: 0; width:120px" id="cabor">';
+		var cabor = '<div class="col-xs-1" style="font-size: 11px; line-height: 18px; text-align:right; white-space:nowrap; overflow:hidden; padding-top: 14px; padding-right: 0; width:150px" id="cabor">';
 		for (var i = 0; i < cabor_year[year][0].length; i++) {
 			cabor += cabor_year[year][0][i];
 			cabor += '<br />';
@@ -53,16 +52,11 @@
 			var header = [["Country", "Gold", "Silver", "Bronze"]];
 			var d = header.concat(country_array[current_country]);
 
-			count++;
-			if (count == 1) {
-		  	var textPosition = "out";
-		  } else {
-		  	var textPosition = "none";
-		  }
-
 			function drawChart() {
 			  var data = google.visualization.arrayToDataTable(d);
 			  var view = new google.visualization.DataView(data);
+			  var chartAreaHeight = data.getNumberOfRows() * 18;
+				var chartHeight = chartAreaHeight;
 			  var options = {
 			  	animation: {
             duration: 1000,
@@ -77,7 +71,8 @@
 		          1:{color:"silver"},
 		          2:{color:"brown"},
 		        },
-		        chartArea: {"height": "100%", "width":"100%"},
+		        chartArea: {"height": chartAreaHeight, "width":"100%"},
+		        height: chartHeight,
 			  };
 			  var chart = new google.visualization.BarChart(document.getElementById("barchart_values_" + current_country));
 			  chart.draw(view, options);
@@ -139,6 +134,21 @@
 					        ["Vietnam", 71, 71, 86 ]
 					    ];
 	      }
+
+	      for (var i = 1; i < dataArray.length; i++) {
+					var cabor_array = dataArray[i];
+					if (!checkedMedal.includes("0")) {
+						if (!checkedMedal.includes("1")) {
+								cabor_array[1] = 0;
+						}
+						if (!checkedMedal.includes("2")) {
+								cabor_array[2] = 0;
+						}
+						if (!checkedMedal.includes("3")) {
+								cabor_array[3] = 0;
+						}
+					}
+				}
 	      var data = google.visualization.arrayToDataTable(dataArray);
 
 	      var view = new google.visualization.DataView(data);
@@ -150,7 +160,6 @@
 	      //                  2]);
 
 	      var options = {
-	        title: "Top Medalist",
 	        bar: {groupWidth: "95%"},
 	        legend: { position: "none" },
 	        isStacked: true,
@@ -159,7 +168,7 @@
 	          1:{color:"silver"},
 	          2:{color:"brown"},
 	        },
-	        chartArea: {"height": "50%", "width":"70%", "left": "10%"},
+	        chartArea: {"height": "80%", "width":"70%", "left": "10%"},
 	        animation: {
             duration: 1000,
             startup: true

@@ -21,7 +21,7 @@
 		<!-- <script type="text/javascript" src="js/filter.js" charset="utf-8"></script> -->
 	</head>
 	<body>
-		<!-- <div class="cont"> -->
+		<div class="container" style="padding-left: 0;">
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
 			<div class="row">
 				<div class="col-md-10">
@@ -36,7 +36,6 @@
 								<tr style="font-size: 11px; white-space:nowrap; overflow:hidden;">
 								<?php
 									$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
-									// sort($country);
 									for ($i = 1; $i < 12; $i++) {
 											echo '<th><center>'.$country[$i].'</center></th>';
 									}
@@ -46,7 +45,7 @@
 								<?php
 										for ($i = 1; $i < 12; $i++) {
 											echo '<td>
-												    	<div id="barchart_values_'. $country[$i] .'" style="height: 550px; width= 100%"></div>
+												    	<div id="barchart_values_'. $country[$i] .'" style="width= 100%; padding-bottom: 30%;"></div>
 													</td>';
 										}
 								?>
@@ -85,16 +84,6 @@
 								<div class="checkbox">
 								  <label><input type="checkbox" name="medal" id="medal-3" value="3" checked>Bronze</label>
 								</div>
-
-								<!-- <br/><br/><br/> -->
-
-								<!-- <b>Sort country by:</b> <br />
-								<div class="radio">
-								  <label><input type="radio" name="sort-country" value="alphabet" checked>Alphabet</label>
-								</div>
-								<div class="radio">
-								  <label><input type="radio" name="sort-country" value="alphabet">Best Medalist</label>
-								</div> -->
 								<br />
 								<input type="submit" value="Apply" class="btn btn-success">
 								<br/>
@@ -102,10 +91,12 @@
 						</div>
 					</div>
 					<div class="row" style="width: 220px;">
-						<div id="columnchart_values" style="height: 300px;"></div>
+						<br /><br /><br />
+						<center><b>Top Medalist:</b></center>
+						<div id="columnchart_values"></div>
 					</div>
 				</div>
 			</div>
-		<!-- </div> -->
+		</div>
 	</body>
 </html>
