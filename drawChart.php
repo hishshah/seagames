@@ -14,7 +14,7 @@
 		var year = getYear()
 		
 		// CABOR COLUMN
-		var cabor = '<div class="col-xs-1" style="font-size: 11px; line-height: 18px; text-align:right; white-space:nowrap; overflow:hidden; padding-top: 14px; padding-right: 0; width:150px" id="cabor">';
+		var cabor = '<div class="col-xs-1 cabor" id="cabor">';
 		for (var i = 0; i < cabor_year[year][0].length; i++) {
 			cabor += cabor_year[year][0][i];
 			cabor += '<br />';
@@ -71,7 +71,7 @@
 		          1:{color:"silver"},
 		          2:{color:"brown"},
 		        },
-		        chartArea: {"height": chartAreaHeight, "width":"100%"},
+		        chartArea: {"height": chartAreaHeight, "width":"90%"},
 		        height: chartHeight,
 			  };
 			  var chart = new google.visualization.BarChart(document.getElementById("barchart_values_" + current_country));

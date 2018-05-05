@@ -21,19 +21,19 @@
 		<!-- <script type="text/javascript" src="js/filter.js" charset="utf-8"></script> -->
 	</head>
 	<body>
-		<div class="container" style="padding-left: 0;">
+		<div class="container">
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
 			<div class="row">
-				<div class="col-md-10">
-					<div class="col-xs-2" id="cabor">
+				<div class="col-md-10 content">
+					<div id="cabor">
 					</div>
-					<div class="col-xs-10" style="overflow-x:scroll; overflow-y:hidden">
+					<div class="col-xs-10 scroll">
 						<?php include 'drawChart.php'; ?>
 						<script type="text/javascript">
 						  getData();
 						</script>
-						<table style="table-layout: fixed; width:200%;">
-								<tr style="font-size: 11px; white-space:nowrap; overflow:hidden;">
+						<table class="main-table">
+							<tr class="table-header">
 								<?php
 									$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
 									for ($i = 1; $i < 12; $i++) {
@@ -45,7 +45,7 @@
 								<?php
 										for ($i = 1; $i < 12; $i++) {
 											echo '<td>
-												    	<div id="barchart_values_'. $country[$i] .'" style="width= 100%; padding-bottom: 30%;"></div>
+												    	<div id="barchart_values_'. $country[$i] .'" class="table-content"></div>
 													</td>';
 										}
 								?>
@@ -54,11 +54,11 @@
 					</div>
 				</div>
 				<div class="col-md-1">
-					<div class="row">
-						<div class="controller">
+					<div class="fixed">
+						<div class="row filter">
 							<form action="JavaScript:getData()">
 								<b>Year:</b> <br />
-								<select id="year" name="year" class="form-control" style="width: 100%">
+								<select id="year" name="year" class="form-control">
 								  <option value="2017">2017</option>
 								  <option value="2015">2015</option>
 								  <option value="2013">2013</option>
@@ -89,11 +89,11 @@
 								<br/>
 							</form>
 						</div>
-					</div>
-					<div class="row" style="width: 220px;">
-						<br /><br /><br />
-						<center><b>Top Medalist:</b></center>
-						<div id="columnchart_values"></div>
+						<div class="row top-medalist">
+							<br /><br />
+							<center><b>Top Medalist:</b></center>
+							<div id="columnchart_values"></div>
+						</div>
 					</div>
 				</div>
 			</div>
