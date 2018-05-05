@@ -21,11 +21,11 @@
 		<!-- <script type="text/javascript" src="js/filter.js" charset="utf-8"></script> -->
 	</head>
 	<body>
-		<div class="container">
+		<!-- <div class="cont"> -->
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
 			<div class="row">
 				<div class="col-md-10">
-					<div class="col-xs-2" style="font-size: 12px; padding-top: 15px; line-height: 1.5; text-align:right; white-space:nowrap; overflow:hidden;" id="cabor">
+					<div class="col-xs-2" id="cabor">
 					</div>
 					<div class="col-xs-10" style="overflow-x:scroll; overflow-y:hidden">
 						<?php include 'drawChart.php'; ?>
@@ -33,12 +33,12 @@
 						  getData();
 						</script>
 						<table style="table-layout: fixed; width:200%;">
-								<tr style="font-size: 11px; text-align: center; white-space:nowrap; overflow:hidden;">
+								<tr style="font-size: 11px; white-space:nowrap; overflow:hidden;">
 								<?php
 									$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
-									sort($country);
+									// sort($country);
 									for ($i = 1; $i < 12; $i++) {
-											echo '<th>'.$country[$i].'</th>';
+											echo '<th><center>'.$country[$i].'</center></th>';
 									}
 								?>
 								</tr>
@@ -46,7 +46,7 @@
 								<?php
 										for ($i = 1; $i < 12; $i++) {
 											echo '<td>
-												    	<div id="barchart_values_'. $country[$i] .'" style="height: 500px; width= 100%"></div>
+												    	<div id="barchart_values_'. $country[$i] .'" style="height: 550px; width= 100%"></div>
 													</td>';
 										}
 								?>
@@ -55,53 +55,57 @@
 					</div>
 				</div>
 				<div class="col-md-1">
-					<div class="controller">
-						<form action="JavaScript:getData()">
-							Year: <br />
-							<select id="year" name="year" class="form-control" style="width: 100%">
-							  <option value="2017">2017</option>
-							  <option value="2015">2015</option>
-							  <option value="2013">2013</option>
-							  <option value="2011">2011</option>
-							  <option value="2009">2009</option>
-							  <option value="2007">2007</option>
-							  <option value="2005">2005</option>
-							</select>
+					<div class="row">
+						<div class="controller">
+							<form action="JavaScript:getData()">
+								<b>Year:</b> <br />
+								<select id="year" name="year" class="form-control" style="width: 100%">
+								  <option value="2017">2017</option>
+								  <option value="2015">2015</option>
+								  <option value="2013">2013</option>
+								  <option value="2011">2011</option>
+								  <option value="2009">2009</option>
+								  <option value="2007">2007</option>
+								  <option value="2005">2005</option>
+								</select>
 
-							<br/><br/><br/>
+								<br/><br/>
 
-							<b>Medal:</b> <br />
+								<b>Medal:</b> <br />
 
-							<div class="checkbox">
-							  <label><input type="checkbox" name="medal" id="medal-0" value="0" checked>All</label>
-							</div>
-							<div class="checkbox">
-							  <label><input type="checkbox" name="medal" id="medal-1" value="1" checked>Gold</label>
-							</div>
-							<div class="checkbox">
-							  <label><input type="checkbox" name="medal" id="medal-2" value="2" checked>Silver</label>
-							</div>
-							<div class="checkbox">
-							  <label><input type="checkbox" name="medal" id="medal-3" value="3" checked>Bronze</label>
-							</div>
+								<div class="checkbox">
+								  <label><input type="checkbox" name="medal" id="medal-0" value="0" checked>All</label>
+								</div>
+								<div class="checkbox">
+								  <label><input type="checkbox" name="medal" id="medal-1" value="1" checked>Gold</label>
+								</div>
+								<div class="checkbox">
+								  <label><input type="checkbox" name="medal" id="medal-2" value="2" checked>Silver</label>
+								</div>
+								<div class="checkbox">
+								  <label><input type="checkbox" name="medal" id="medal-3" value="3" checked>Bronze</label>
+								</div>
 
-							<br/><br/><br/>
+								<!-- <br/><br/><br/> -->
 
-							<b>Sort country by:</b> <br />
-							<div class="radio">
-							  <label><input type="radio" name="sort-country" value="alphabet" checked>Alphabet</label>
-							</div>
-							<div class="radio">
-							  <label><input type="radio" name="sort-country" value="alphabet">Best Medalist</label>
-							</div>
-							<br />
-							<input type="submit" value="Apply" class="btn btn-success">
-							<br/>
-							<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
-						</form>
+								<!-- <b>Sort country by:</b> <br />
+								<div class="radio">
+								  <label><input type="radio" name="sort-country" value="alphabet" checked>Alphabet</label>
+								</div>
+								<div class="radio">
+								  <label><input type="radio" name="sort-country" value="alphabet">Best Medalist</label>
+								</div> -->
+								<br />
+								<input type="submit" value="Apply" class="btn btn-success">
+								<br/>
+							</form>
+						</div>
+					</div>
+					<div class="row" style="width: 220px;">
+						<div id="columnchart_values" style="height: 300px;"></div>
 					</div>
 				</div>
 			</div>
-		</div>
+		<!-- </div> -->
 	</body>
 </html>

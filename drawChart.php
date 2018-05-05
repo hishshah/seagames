@@ -15,7 +15,7 @@
 		var year = getYear()
 		
 		// CABOR COLUMN
-		var cabor = '<div class="col-xs-2" style="font-size: 12px; padding-top: 15px; line-height: 1.5; text-align:right; white-space:nowrap; overflow:hidden;" id="cabor">';
+		var cabor = '<div class="col-xs-1" style="font-size: 8px; padding-top: 15px; line-height: 1.5; text-align:right; white-space:nowrap; overflow:hidden; padding-right: 0; width:120px" id="cabor">';
 		for (var i = 0; i < cabor_year[year][0].length; i++) {
 			cabor += cabor_year[year][0][i];
 			cabor += '<br />';
@@ -64,6 +64,10 @@
 			  var data = google.visualization.arrayToDataTable(d);
 			  var view = new google.visualization.DataView(data);
 			  var options = {
+			  	animation: {
+            duration: 1000,
+            startup: true
+	        },
 			    legend: { position: "none" },
 			    hAxis: { textPosition: "none"},
 			    vAxis: { textPosition: "none"},
@@ -73,7 +77,7 @@
 		          1:{color:"silver"},
 		          2:{color:"brown"},
 		        },
-		        chartArea: {"height": "100%"},
+		        chartArea: {"height": "100%", "width":"100%"},
 			  };
 			  var chart = new google.visualization.BarChart(document.getElementById("barchart_values_" + current_country));
 			  chart.draw(view, options);
@@ -147,8 +151,6 @@
 
 	      var options = {
 	        title: "Top Medalist",
-	        width: 300,
-	        height: 200,
 	        bar: {groupWidth: "95%"},
 	        legend: { position: "none" },
 	        isStacked: true,
@@ -156,6 +158,11 @@
 	          0:{color:"gold"},
 	          1:{color:"silver"},
 	          2:{color:"brown"},
+	        },
+	        chartArea: {"height": "50%", "width":"70%", "left": "10%"},
+	        animation: {
+            duration: 1000,
+            startup: true
 	        },
 	      };
 	      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
