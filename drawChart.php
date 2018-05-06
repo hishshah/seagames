@@ -84,6 +84,9 @@
 			  };
 				id++;
 				$("#"+id).text(current_country);
+				$("#"+id).css("text-align", "center");
+				$("#"+id).css("padding-bottom", "8px");
+
 			  var chart = new google.visualization.BarChart(document.getElementById("barchart_values_" + id));
 			  chart.draw(view, options);
 			}

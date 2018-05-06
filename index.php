@@ -38,7 +38,7 @@
 								<?php
 									$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
 									for ($i = 1; $i < 12; $i++) {
-											echo '<th id='.$i.'><center></center></th>';
+											echo '<th id='.$i.'></th>';
 									}
 								?>
 								</tr>
