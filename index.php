@@ -86,7 +86,9 @@
 								  <label><input type="checkbox" name="medal" id="medal-3" value="3" checked>Bronze</label>
 								</div>
 								<br />
-								<input type="submit" value="Apply" class="btn btn-success">
+								<div class="button-wrapper">
+									<input type="submit" value="Apply" class="btn btn-primary button">
+								</div>
 								<br/>
 							</form>
 						</div>
