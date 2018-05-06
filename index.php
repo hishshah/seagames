@@ -100,7 +100,7 @@
 						<div class="row top-medalist">
 							<br />
 							<center><b>Overall Medal Count</b></center>
-							<div id="columnchart_values"></div>
+							<div id="piechart"></div>
 						</div>
 					</div>
 				</div>

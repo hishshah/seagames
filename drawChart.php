@@ -166,7 +166,7 @@
 	        },
 	        pieStartAngle: 320,
 	      };
-	      var chart = new google.visualization.PieChart(document.getElementById("columnchart_values"));
+	      var chart = new google.visualization.PieChart(document.getElementById("piechart"));
 	      chart.draw(view, options);
 	  }
 
