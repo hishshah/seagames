@@ -1,10 +1,9 @@
 <?php include 'filterMedal.php'; ?>
 <script type="text/javascript">
-	
+
 	function getData() {
 		// GET MEDAL VALUE
 		var checkedMedal = getMedalFilterValue();
-		// console.log("checkedMedal", checkedMedal);
 
 		// filter year
 		<?php include 'filteryear.php'; ?>
@@ -12,7 +11,7 @@
 		var country = ["Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
 
 		var year = getYear()
-		
+
 		// CABOR COLUMN
 		var cabor = '<div class="col-xs-1 cabor" id="cabor">';
 		for (var i = 0; i < cabor_year[year][0].length; i++) {
@@ -22,9 +21,17 @@
 		cabor += '</div>';
 
 		$('#cabor').replaceWith(cabor);
+		var sort = $('input[name=sort-country]:checked').val();
 
+		if (typeof sort === "undefined" || sort === "best-medalist") {
+			var top_country = {"2005": ["Philippines", "Thailand", "Vietnam", "Malaysia", "Indonesia", "Singapore", "Myanmar", "Laos", "Brunei", "Cambodia", "Timor-Leste"], "2007": ["Thailand", "Malaysia", "Vietnam", "Indonesia", "Singapore", "Philippines", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"], "2009": ["Thailand", "Vietnam", "Indonesia", "Malaysia", "Philippines", "Singapore", "Laos", "Myanmar", "Cambodia", "Brunei", "Timor-Leste"], "2011": ["Indonesia", "Thailand", "Vietnam", "Malaysia", "Singapore", "Philippines", "Myanmar", "Laos", "Cambodia", "Timor-Leste", "Brunei"], "2013": ["Thailand", "Myanmar", "Vietnam", "Indonesia", "Malaysia", "Singapore", "Philippines", "Laos", "Cambodia", "Timor-Leste", "Brunei"], "2015": ["Thailand", "Singapore", "Vietnam", "Malaysia", "Indonesia", "Philippines", "Myanmar", "Cambodia", "Laos", "Brunei", "Timor-Leste"], "2017": ["Malaysia", "Thailand", "Vietnam", "Singapore", "Indonesia", "Philippines", "Myanmar", "Cambodia", "Laos", "Brunei", "Timor-Leste"]};
+			country = top_country[year];
+		} else {
+			country.sort();
+		}
 
 		// LOOP
+		id = 0;
 		country.forEach(function(current_country) {
 			// filter medal
 			for (var i = 0; i < country_array[current_country].length; i++) {
@@ -58,6 +65,7 @@
 			  var chartAreaHeight = data.getNumberOfRows() * 18;
 				var chartHeight = chartAreaHeight;
 			  var options = {
+					title: current_country,
 			  	animation: {
             duration: 1000,
             startup: true
@@ -74,11 +82,13 @@
 		        chartArea: {"height": chartAreaHeight, "width":"90%"},
 		        height: chartHeight,
 			  };
-			  var chart = new google.visualization.BarChart(document.getElementById("barchart_values_" + current_country));
+				id++;
+				$("#"+id).text(current_country);
+			  var chart = new google.visualization.BarChart(document.getElementById("barchart_values_" + id));
 			  chart.draw(view, options);
 			}
 		});
-		
+
 		// draw rank chart
 		google.charts.load("current", {packages:['corechart']});
 	    google.charts.setOnLoadCallback(drawRankChart);

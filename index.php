@@ -38,15 +38,15 @@
 								<?php
 									$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
 									for ($i = 1; $i < 12; $i++) {
-											echo '<th><center>'.$country[$i].'</center></th>';
+											echo '<th id='.$i.'><center></center></th>';
 									}
 								?>
 								</tr>
 								<tr>
 								<?php
-										for ($i = 1; $i < 12; $i++) {
+										for ($idx = 1; $idx < 12; $idx++) {
 											echo '<td>
-												    	<div id="barchart_values_'. $country[$i] .'" class="table-content"></div>
+												    	<div id="barchart_values_'.$idx.'" class="table-content"></div>
 													</td>';
 										}
 								?>
@@ -70,6 +70,14 @@
 								</select>
 
 								<br/>
+
+								<b>Sort country by:</b> <br />
+								<div class="radio">
+									<label><input type="radio" name="sort-country" value="best-medalist" checked>Best Medalist</label>
+								</div>
+								<div class="radio">
+								  <label><input type="radio" name="sort-country" value="alphabet">Alphabet</label>
+								</div>
 
 								<b>Show Medal:</b> <br />
 
