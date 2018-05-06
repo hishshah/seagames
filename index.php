@@ -68,7 +68,7 @@
 								  <option value="2005">2005</option>
 								</select>
 
-								<br/><br/>
+								<br/>
 
 								<b>Medal:</b> <br />
 
@@ -90,7 +90,7 @@
 							</form>
 						</div>
 						<div class="row top-medalist">
-							<br /><br />
+							<br />
 							<center><b>Top Medalist:</b></center>
 							<div id="columnchart_values"></div>
 						</div>
