@@ -71,7 +71,7 @@
 
 								<br/>
 
-								<b>Medal:</b> <br />
+								<b>Show Medal:</b> <br />
 
 								<div class="checkbox">
 								  <label><input type="checkbox" name="medal" id="medal-0" value="0" checked>All</label>
