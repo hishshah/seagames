@@ -3,7 +3,11 @@
 	font-family: 'Montserrat', sans-serif;
 	font-size: 30px;
 	font-weight: bold;
-	margin-bottom: 40px;
+	margin-bottom: 15px;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
 }
 
 .container {
@@ -45,7 +49,7 @@
 }
 
 .top-medalist {
-	width: 220px;
+	width: 200px;
 }
 
 .fixed {
@@ -78,3 +82,5 @@ select {
 .button {
 	align-self: center;
 }
+
+svg > g > g:last-child { pointer-events: none }

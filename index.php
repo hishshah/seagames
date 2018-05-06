@@ -92,16 +92,14 @@
 								<div class="checkbox">
 								  <label><input type="checkbox" name="medal" id="medal-3" value="3" checked>Bronze</label>
 								</div>
-								<br />
 								<div class="button-wrapper">
 									<input type="submit" value="Apply" class="btn btn-primary button">
 								</div>
-								<br/>
 							</form>
 						</div>
 						<div class="row top-medalist">
 							<br />
-							<center><b>Top Medalist:</b></center>
+							<center><b>Total:</b></center>
 							<div id="columnchart_values"></div>
 						</div>
 					</div>

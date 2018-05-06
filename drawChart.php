@@ -1,5 +1,10 @@
 <?php include 'filterMedal.php'; ?>
 <script type="text/javascript">
+	function Comparator(a, b) {
+		if (a[1] > b[1]) return -1;
+		if (a[1] < b[1]) return 1;
+		return 0;
+	}
 
 	function getData() {
 		// GET MEDAL VALUE
@@ -30,10 +35,16 @@
 			country.sort();
 		}
 
+		var total = [];
 		// LOOP
 		id = 0;
 		country.forEach(function(current_country) {
 			// filter medal
+			var total_cabor = [];
+  		var sumgold = 0;
+  		var sumsilver = 0;
+  		var sumbronze = 0;
+  		var sum = 0;
 			for (var i = 0; i < country_array[current_country].length; i++) {
 				var cabor_array = country_array[current_country][i];
 				for (var j = 1; j < cabor_array.length; j++) { // string to int
@@ -50,7 +61,18 @@
 							cabor_array[3] = 0;
 					}
 				}
+				sumgold += cabor_array[1];
+				sumsilver += cabor_array[2];
+				sumbronze += cabor_array[3];
 			}
+			sum = sumgold + sumsilver + sumbronze;
+			total_cabor.push(current_country);
+    	// total_cabor.push(sumgold);
+    	// total_cabor.push(sumsilver);
+    	// total_cabor.push(sumbronze);
+    	total_cabor.push(sum);
+    	total.push(total_cabor);
+    	// console.log(total)
 
 			// chart
 			google.charts.load("current", {packages:["corechart"]});
@@ -97,71 +119,19 @@
 	    google.charts.setOnLoadCallback(drawRankChart);
 	    function drawRankChart() {
 	      var dataArray = [];
-	      if (year == 2017){
-	      	dataArray = [
-					        ["Country", "Gold", "Silver", "Bronze" ],
-					        ["Malaysia", 145, 90, 86 ],
-					        ["Thailand", 71, 84, 88 ],
-					        ["Vietnam", 59, 49, 60 ]
-					    ];
-	      } else if (year == 2015){
-	      	dataArray = [
-					        ["Country", "Gold", "Silver", "Bronze" ],
-					        ["Thailand", 95, 83, 69 ],
-					        ["Singapore", 84, 73, 102 ],
-					        ["Vietnam", 73, 53, 60 ]
-					    ];
-	      } else if (year == 2013){
-	      	dataArray = [
-					        ["Country", "Gold", "Silver", "Bronze" ],
-					        ["Thailand", 108, 94, 82 ],
-					        ["Myanmar", 84, 63, 84 ],
-					        ["Vietnam", 74, 85, 86 ]
-					    ];
-	      } else if (year == 2011){
-	      	dataArray = [
-					        ["Country", "Gold", "Silver", "Bronze" ],
-					        ["Indonesia", 182, 151, 143 ],
-					        ["Thailand", 109, 101, 119 ],
-					        ["Vietnam", 96, 92, 100 ]
-					    ];
-	      } else if (year == 2009){
-	      	dataArray = [
-					        ["Country", "Gold", "Silver", "Bronze" ],
-					        ["Thailand", 86, 83, 97 ],
-					        ["Vietnam", 83, 75, 57 ],
-					        ["Indonesia", 43, 53, 74 ]
-					    ];
-	      } else if (year == 2007){
-	      	dataArray = [
-					        ["Country", "Gold", "Silver", "Bronze" ],
-					        ["Thailand", 183, 123, 103 ],
-					        ["Malaysia", 68, 52, 96 ],
-					        ["Vietnam", 64, 58, 82 ]
-					    ];
-	      } else if (year == 2005){
-	      	dataArray = [
-					        ["Country", "Gold", "Silver", "Bronze" ],
-					        ["Philippines", 112, 85, 93 ],
-					        ["Thailand", 87, 79, 117 ],
-					        ["Vietnam", 71, 71, 86 ]
-					    ];
-	      }
-
-	      for (var i = 1; i < dataArray.length; i++) {
-					var cabor_array = dataArray[i];
-					if (!checkedMedal.includes("0")) {
-						if (!checkedMedal.includes("1")) {
-								cabor_array[1] = 0;
-						}
-						if (!checkedMedal.includes("2")) {
-								cabor_array[2] = 0;
-						}
-						if (!checkedMedal.includes("3")) {
-								cabor_array[3] = 0;
-						}
-					}
-				}
+	      var dataArray = [];
+	      console.log(total);
+	      total = total.sort(Comparator);
+	      // total.splice(3, 8);
+	      // for (var i = 0; i < total.length; i++) {
+	      // 	x = total[i];
+	      // 	x.splice(4, 1);
+	      // }
+				
+				var header = [["Country", "Gold", "Silver", "Bronze"]];
+				var header = [["Country", "Total"]];
+				var dataArray = header.concat(total);
+				// console.log(dataArray);
 	      var data = google.visualization.arrayToDataTable(dataArray);
 
 	      var view = new google.visualization.DataView(data);
@@ -173,21 +143,30 @@
 	      //                  2]);
 
 	      var options = {
-	        bar: {groupWidth: "95%"},
 	        legend: { position: "none" },
+	        pieSliceText: 'label',
 	        isStacked: true,
-	        series: {
-	          0:{color:"gold"},
-	          1:{color:"silver"},
-	          2:{color:"brown"},
-	        },
-	        chartArea: {"height": "80%", "width":"70%", "left": "10%"},
+	        colors: [
+	        					'#990411', 
+	        					'#a21a21', 
+	        					'#ab2b30', 
+	        					'#b53e41', 
+	        					'#be5255',
+	        					'#c76466', 
+	        					'#d07678', 
+	        					'#d98789', 
+	        					'#e1989a', 
+	        					'#e9a9aa',
+	        					'#f1b9ba',
+	        				],
+	        chartArea: {"height": "95%", "width":"95%"},
 	        animation: {
             duration: 1000,
             startup: true
 	        },
+	        pieStartAngle: 320,
 	      };
-	      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+	      var chart = new google.visualization.PieChart(document.getElementById("columnchart_values"));
 	      chart.draw(view, options);
 	  }
 
