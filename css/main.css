@@ -1,9 +1,9 @@
 .title {
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;
-	font-size: 30px;
+	font-size: 28px;
 	font-weight: bold;
-	margin-bottom: 15px;
+	margin-bottom: 40px;
 }
 
 body {
@@ -50,6 +50,7 @@ body {
 
 .top-medalist {
 	width: 200px;
+	margin-top: 25px;
 }
 
 .fixed {
@@ -64,7 +65,7 @@ body {
 }
 
 select {
-	margin-top: 10px; 
+	margin-top: 10px;
 }
 
 .button-wrapper {
