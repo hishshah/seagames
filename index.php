@@ -36,7 +36,6 @@
 						<table class="main-table">
 							<tr class="table-header">
 								<?php
-									$country = ["", "Thailand", "Indonesia", "Malaysia", "Philippines", "Singapore", "Vietnam", "Myanmar", "Laos", "Cambodia", "Brunei", "Timor-Leste"];
 									for ($i = 1; $i < 12; $i++) {
 											echo '<th id='.$i.'></th>';
 									}
@@ -71,7 +70,7 @@
 
 								<br/>
 
-								<b>Sort country by:</b> <br />
+								<b>Sort Country By:</b> <br />
 								<div class="radio">
 									<label><input type="radio" name="sort-country" value="best-medalist" checked>Best Medalist</label>
 								</div>
