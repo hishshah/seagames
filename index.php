@@ -22,7 +22,7 @@
 		<!-- <script type="text/javascript" src="js/filter.js" charset="utf-8"></script> -->
 	</head>
 	<body>
-		<div class="container">
+		<div class="container-wrap">
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
 			<div class="row">
 				<div class="col-md-10 content">

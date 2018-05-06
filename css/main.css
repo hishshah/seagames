@@ -64,6 +64,13 @@
 	justify-content: center;
 }
 
+.container-wrap {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 95%;
+	padding-right: 10px;
+}
+
 .button {
 	align-self: center;
 }
