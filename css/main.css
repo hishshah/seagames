@@ -3,7 +3,7 @@
 	font-family: 'Montserrat', sans-serif;
 	font-size: 28px;
 	font-weight: bold;
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 	text-align:right;
 	white-space:nowrap;
 	overflow:hidden;
-	padding-top: 24px;
+	padding-top: 55px;
 	padding-right: 0;
 	width:150px;
 }
@@ -83,3 +83,26 @@ select {
 }
 
 svg > g > g:last-child { pointer-events: none }
+
+.double-scroll {
+  width: 100%;
+  padding-top: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 11px;
+}

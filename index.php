@@ -12,6 +12,7 @@
 
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.doubleScroll.js"></script>
 
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -20,7 +21,12 @@
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 		<link href="css/main.css" rel="stylesheet">
-		<!-- <script type="text/javascript" src="js/filter.js" charset="utf-8"></script> -->
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+			  $('.double-scroll').doubleScroll();
+			});
+		</script>
 	</head>
 	<body>
 		<div class="container-wrap">
@@ -34,24 +40,26 @@
 						<script type="text/javascript">
 						  getData();
 						</script>
-						<table class="main-table">
-							<tr class="table-header">
-								<?php
-									for ($i = 1; $i < 12; $i++) {
-											echo '<th id='.$i.'></th>';
-									}
-								?>
-								</tr>
-								<tr>
-								<?php
-										for ($idx = 1; $idx < 12; $idx++) {
-											echo '<td>
-												    	<div id="barchart_values_'.$idx.'" class="table-content"></div>
-													</td>';
+						<div class="double-scroll">
+							<table class="main-table">
+								<tr class="table-header">
+									<?php
+										for ($i = 1; $i < 12; $i++) {
+												echo '<th id='.$i.'></th>';
 										}
-								?>
-							</tr>
-						</table>
+									?>
+									</tr>
+									<tr>
+									<?php
+											for ($idx = 1; $idx < 12; $idx++) {
+												echo '<td>
+													    	<div id="barchart_values_'.$idx.'" class="table-content"></div>
+														</td>';
+											}
+									?>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-1">
