@@ -87,8 +87,7 @@
 			  var chartAreaHeight = data.getNumberOfRows() * 18;
 				var chartHeight = chartAreaHeight;
 			  var options = {
-					title: current_country,
-			  	animation: {
+					animation: {
             duration: 1000,
             startup: true
 	        },

@@ -13,6 +13,7 @@
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.doubleScroll.js"></script>
+		<script type="text/javascript" src="js/jquery.floatThead.min.js"></script>
 
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -22,33 +23,51 @@
 
 		<link href="css/main.css" rel="stylesheet">
 		
+		<!-- Double Scroll -->
 		<script type="text/javascript">
 			$(document).ready(function() {
-			  $('.double-scroll').doubleScroll();
+			  $('.scroll').doubleScroll({resetOnWindowResize: true});
+			});
+		</script>
+
+		<script>
+			$(function(){
+			  $('.main-table').floatThead({
+		      position: 'fixed',
+		      responsiveContainer: function() { return $(".scroll") }
+			  });
 			});
 		</script>
 	</head>
 	<body>
 		<div class="container-wrap">
 			<h1 class="title">SEA GAMES OVERVIEW</h1>
+
 			<div class="row">
-				<div class="col-md-10 content">
+				<!-- MAIN TABLE -->
+				<div class="col-md-10">
+					<!-- CABOR COLUMN -->
 					<div id="cabor">
 					</div>
-					<div class="col-xs-10 scroll">
+
+					<!-- CHART -->
+					<div class="col-xs-10">
 						<?php include 'drawChart.php'; ?>
 						<script type="text/javascript">
 						  getData();
 						</script>
-						<div class="double-scroll">
+						<div class="scroll">
 							<table class="main-table">
-								<tr class="table-header">
-									<?php
-										for ($i = 1; $i < 12; $i++) {
-												echo '<th id='.$i.'></th>';
-										}
-									?>
+								<thead>
+									<tr class="table-header">
+										<?php
+											for ($i = 1; $i < 12; $i++) {
+													echo '<th id='.$i.'></th>';
+											}
+										?>
 									</tr>
+								</thead>
+								<tbody>
 									<tr>
 									<?php
 											for ($idx = 1; $idx < 12; $idx++) {
@@ -57,14 +76,18 @@
 														</td>';
 											}
 									?>
-								</tr>
+									</tr>
+								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
+
+				<!-- FILTER AND PIE CHART -->
 				<div class="col-md-1">
 					<div class="fixed">
 						<div class="row filter">
+							<!-- FILTER -->
 							<form action="JavaScript:getData()">
 								<b>Year:</b> <br />
 								<select id="year" name="year" class="form-control">
@@ -106,13 +129,21 @@
 								</div>
 							</form>
 						</div>
+
+						<!-- PIE CHART -->
 						<div class="row top-medalist">
 							<br />
-							<center><b>Overall Medal Count</b></center>
+							<center><b>Overall Medal</b></center>
 							<div id="piechart"></div>
 						</div>
 					</div>
 				</div>
+			</div>
+
+			<!-- FOOTER -->
+			<div class="footer">
+				<div class="left">Data source: <a href="https://en.wikipedia.org/wiki/Southeast_Asian_Games"  target="_blank">Wikipedia</a></div>
+				<div class="right">Fanda Yuliana Putri - 13514023 | Hishshah Ghassani - 13514056 | Hasna Nur Karimah - 13514106</div>
 			</div>
 		</div>
 	</body>

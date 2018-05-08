@@ -25,11 +25,6 @@ body {
 	width:150px;
 }
 
-.scroll {
-	overflow-x:scroll;
-	overflow-y:hidden;
-}
-
 .main-table {
 	table-layout: fixed;
 	width:200%;
@@ -40,9 +35,14 @@ body {
 	z-index: 1;
 }
 
+thead th {
+	background-color: white;
+	width: 100%;
+}
+
 .table-content {
 	width: 100%;
-	padding-bottom: 30%;
+	padding-bottom: 10%;
 	/*margin-top: 18px;*/
 }
 
@@ -84,7 +84,7 @@ select {
 
 svg > g > g:last-child { pointer-events: none }
 
-.double-scroll {
+.scroll {
   width: 100%;
   padding-top: 10px;
 }
@@ -105,4 +105,20 @@ svg > g > g:last-child { pointer-events: none }
 
 ::-webkit-scrollbar:horizontal {
     height: 11px;
+}
+
+.footer {
+	margin-top: 10px;
+	font-size: 9px;
+}
+
+.left {
+	margin-bottom: 10px;
+	float: left;
+}
+
+.right {
+	margin-bottom: 10px;
+	float: right;
+	text-align: right;
 }
